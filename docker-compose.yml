@@ -12,7 +12,8 @@ services:
     ports:
       - 3000:1337
     environment:
-      - BASE_URL=http://localhost:3000
+      #- BASE_URL=http://localhost:3000
+      - BASE_URL=https://urethane-dimple-stage.ngrok-free.dev
       - DATABASE_URL=postgresql://postgres@postgres/planka
 
       # Optionally store the database password in secrets:
@@ -22,13 +23,13 @@ services:
       # secrets:
       #   - database_password
 
-      - SECRET_KEY=notsecretkey
+      - SECRET_KEY=794daf161fb8e30482eb8209eb3bd2e0984efcdfbfee4a6cf88f12f89b28629dd62843a43f32d3b1de1e362d88b45c94ed74dc4efc49dbdfb1d886d412517ac9
       # Optionally store in secrets - then SECRET_KEY should not be set
       # - SECRET_KEY__FILE=/run/secrets/secret_key
 
       # - LOG_LEVEL=warn
 
-      # - TRUST_PROXY=true
+       - TRUST_PROXY=true
       # - MAX_UPLOAD_FILE_SIZE=
       # - TOKEN_EXPIRES_IN=365 # In days
 
