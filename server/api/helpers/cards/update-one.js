@@ -119,6 +119,13 @@ module.exports = {
       values.isDueCompleted = null;
     }
 
+
+    if (!_.isUndefined(values.dueDate) && values.dueDate !== inputs.record.dueDate) {
+      values.dueDateReminder3dSent = false;
+      values.dueDateReminder2dSent = false;
+      values.dueDateReminder1dSent = false;
+      values.dueDateReminder1hSent = false;
+    }
     let card;
     if (_.isEmpty(values)) {
       card = inputs.record;

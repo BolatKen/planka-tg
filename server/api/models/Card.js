@@ -180,6 +180,26 @@ module.exports = {
       allowNull: true,
       columnName: 'is_due_completed',
     },
+    dueDateReminder3dSent: {
+      type: 'boolean',
+      defaultsTo: false,
+      columnName: 'due_date_reminder_3_d_sent',
+    },
+    dueDateReminder2dSent: {
+      type: 'boolean',
+      defaultsTo: false,
+      columnName: 'due_date_reminder_2_d_sent',
+    },
+    dueDateReminder1dSent: {
+      type: 'boolean',
+      defaultsTo: false,
+      columnName: 'due_date_reminder_1_d_sent',
+    },
+    dueDateReminder1hSent: {
+      type: 'boolean',
+      defaultsTo: false,
+      columnName: 'due_date_reminder_1_h_sent',
+    },
     stopwatch: {
       type: 'json',
     },
