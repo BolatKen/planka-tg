@@ -15,6 +15,7 @@ services:
       - BASE_URL=http://localhost:1337
       - DATABASE_URL=postgresql://postgres@postgres/planka
       - SECRET_KEY=notsecretkey
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
 
       # - LOG_LEVEL=warn
 

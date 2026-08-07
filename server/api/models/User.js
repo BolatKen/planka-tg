@@ -383,6 +383,13 @@ module.exports = {
       defaultsTo: false,
       columnName: 'is_sso_user',
     },
+    telegramChatId: {
+      type: 'string',
+      isNotEmptyString: true,
+      allowNull: true,
+      unique: true,
+      columnName: 'telegram_chat_id',
+    },
     isDeactivated: {
       type: 'boolean',
       defaultsTo: false,

@@ -75,6 +75,7 @@ module.exports.custom = {
   s3RequestChecksumCalculation: process.env.S3_REQUEST_CHECKSUM_CALCULATION,
 
   oidcIssuer: process.env.OIDC_ISSUER,
+  telegramBotToken: process.env.TELEGRAM_BOT_TOKEN,
   oidcClientId: process.env.OIDC_CLIENT_ID,
   oidcClientSecret: process.env.OIDC_CLIENT_SECRET,
   oidcUseOauthCallback: process.env.OIDC_USE_OAUTH_CALLBACK === 'true',

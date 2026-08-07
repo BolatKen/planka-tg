@@ -83,6 +83,11 @@ const getOneByEmail = (email) =>
     email: email.toLowerCase(),
   });
 
+const getOneByTelegramChatId = (telegramChatId) =>
+  User.findOne({
+    telegramChatId,
+  });
+
 const getOneActiveByEmailOrUsername = (emailOrUsername) => {
   const fieldName = emailOrUsername.includes('@') ? 'email' : 'username';
 
@@ -198,6 +203,7 @@ module.exports = {
   getAll,
   getOneById,
   getOneByEmail,
+  getOneByTelegramChatId,
   getOneActiveByEmailOrUsername,
   getOneActiveByApiKeyHash,
   updateOne,

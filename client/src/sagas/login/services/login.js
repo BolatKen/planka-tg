@@ -26,7 +26,12 @@ export function* authenticate(data) {
 
   let accessToken;
   try {
-    ({ item: accessToken } = yield call(api.createAccessToken, data));
+    const payload = { ...data };
+    if (window.Telegram?.WebApp?.initData) {
+      payload.initData = window.Telegram.WebApp.initData;
+    }
+
+    ({ item: accessToken } = yield call(api.createAccessToken, payload));
   } catch (error) {
     let terms;
     if (error.step === AccessTokenSteps.ACCEPT_TERMS) {

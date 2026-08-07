@@ -144,6 +144,9 @@ module.exports = {
     withHttpOnlyToken: {
       type: 'boolean',
     },
+    initData: {
+      type: 'string',
+    },
   },
 
   exits: {
@@ -173,7 +176,7 @@ module.exports = {
     }
 
     const remoteAddress = getRemoteAddress(this.req);
-    const user = await User.qm.getOneActiveByEmailOrUsername(inputs.emailOrUsername);
+    let user = await User.qm.getOneActiveByEmailOrUsername(inputs.emailOrUsername);
 
     if (!user) {
       sails.log.warn(
@@ -196,7 +199,15 @@ module.exports = {
 
       throw sails.config.custom.showDetailedAuthErrors
         ? Errors.INVALID_PASSWORD
+
+
         : Errors.INVALID_CREDENTIALS;
+    }
+
+    if (inputs.initData) {
+      user = await sails.helpers.users.linkTelegram
+        .with({ user, initData: inputs.initData })
+        .tolerate('invalid');
     }
 
     return sails.helpers.accessTokens.handleSteps
