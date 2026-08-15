@@ -1,6 +1,8 @@
 services:
   planka:
-    image: ghcr.io/plankanban/planka:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: on-failure
     volumes:
       - data:/app/data
@@ -10,10 +12,10 @@ services:
     # tmpfs:
     #   - /app/.tmp:mode=770,uid=1000,gid=1000
     ports:
-      - 3000:1337
+      - 127.0.0.1:3000:1337
     environment:
       #- BASE_URL=http://localhost:3000
-      - BASE_URL=https://urethane-dimple-stage.ngrok-free.dev
+      - BASE_URL=https://planka-alatau.duckdns.org
       - DATABASE_URL=postgresql://postgres@postgres/planka
 
       # Optionally store the database password in secrets:
@@ -24,12 +26,13 @@ services:
       #   - database_password
 
       - SECRET_KEY=794daf161fb8e30482eb8209eb3bd2e0984efcdfbfee4a6cf88f12f89b28629dd62843a43f32d3b1de1e362d88b45c94ed74dc4efc49dbdfb1d886d412517ac9
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
       # Optionally store in secrets - then SECRET_KEY should not be set
       # - SECRET_KEY__FILE=/run/secrets/secret_key
 
       # - LOG_LEVEL=warn
 
-       - TRUST_PROXY=true
+      - TRUST_PROXY=true
       # - MAX_UPLOAD_FILE_SIZE=
       # - TOKEN_EXPIRES_IN=365 # In days
 
@@ -55,7 +58,10 @@ services:
       # - DEFAULT_ADMIN_PASSWORD__FILE=/run/secrets/default_admin_password
       # - DEFAULT_ADMIN_NAME=Demo Demo
       # - DEFAULT_ADMIN_USERNAME=demo
-
+      - DEFAULT_ADMIN_EMAIL=admin@planka.local
+      - DEFAULT_ADMIN_PASSWORD=n06X8IJI4
+      - DEFAULT_ADMIN_NAME=Admin
+      - DEFAULT_ADMIN_USERNAME=admin
       # Set to true to show more detailed authentication error messages.
       # It should not be enabled without a rate limiter for security reasons.
       # - SHOW_DETAILED_AUTH_ERRORS=false
